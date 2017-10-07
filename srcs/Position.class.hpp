@@ -6,7 +6,7 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:24:14 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 15:35:26 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 20:58:31 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ public:
 	~Position(void);
 
 	Position &	operator=(Position const & rhs);
+	bool		operator==(Position const & rhs) const;
 
 	int			getX(void) const;
 	void		setX(int x);
@@ -35,5 +36,7 @@ private:
 	Position(void);
 
 };
+
+
 
 #endif

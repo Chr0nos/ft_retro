@@ -6,7 +6,7 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:24:17 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 16:14:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 21:00:13 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ Position &	Position::operator=(Position const & rhs)
 		this->_y = rhs.getY();
 	}
 	return *this;
+}
+
+bool		Position::operator==(Position const & rhs) const
+{
+	if (this->_x == rhs.getX() && this->_y == rhs.getY())
+		return true;
+	return false;
 }
 
 int			Position::getX(void) const
