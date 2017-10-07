@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:57 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 14:24:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 15:44:45 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DISPLAY_HPP
 # include <string>
 # include <iostream>
+# include "Position.class.hpp"
 
 class Display
 {
@@ -26,6 +27,9 @@ class Display
 		Display& operator=(Display const & src);
 		void	show(std::string const & message);
 		void	flush(void);
+		void	putstr(std::string const & str, unsigned int x, unsigned int y);
+		void	putstr(std::string const & src, Position const & pos);
+
 
 	private:
 		void	init(void);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 14:17:04 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 15:47:31 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,17 @@ void	Display::show(std::string const & message)
 	if (!this->isVisible())
 		return ;
 	printw(message.c_str());
+}
+
+void	Display::putstr(std::string const & str, unsigned int x, unsigned int y)
+{
+	move(static_cast<int>(x), static_cast<int>(y));
+	printw(str.c_str());
+}
+
+void	Display::putstr(std::string const & str, Position const & pos)
+{
+	this->putstr(str, static_cast<unsigned int>(pos.getX()), static_cast<unsigned int>(pos.getY()));
 }
 
 void	Display::flush(void)

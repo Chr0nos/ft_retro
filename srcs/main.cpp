@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:32:33 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 14:24:35 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 15:42:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int		main(void)
 
 	std::srand(static_cast<unsigned int>(std::time(NULL)));
 	screen.setVisible(true);
-	screen.show("hello world\n");
-	screen.show("Other thing");
+	for (unsigned int i = 0 ; i < 85 ; i++)
+		screen.putstr("-", i, i);
 	screen.flush();
 	getch();
 	return (0);
