@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 19:04:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 19:16:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void	Game::start(void)
 		if (c != -1)
 		{
 			keyString.str("");
-			keyString << "last input: " << c << " - t: " << t;
+			keyString << "last input: " << c << " - t: " << t << " - pos: " << p.getX() << "@" << p.getY();
 		}
+		this->_screen.clearScreen();
 		this->_screen.putstr(keyString.str(), 2, 5);
-		//up
-		this->_screen.putstr(" ", p.getX(), p.getY());
+		//this->_screen.putstr(" ", p.getX(), p.getY());
 		if (c == 'w')
 			p.move(0, -1);
 		else if (c == 's')
@@ -71,6 +71,11 @@ void	Game::start(void)
 			p.move(2, 0);
 		else if (c == 'a')
 			p.move(-2, 0);
+		else if (c == ' ')
+		{
+			IBullet		*bullet = p.fire();
+			delete bullet;
+		}
 		// place the Display/events loop here
 		this->_screen.putstr(p.getC(), p.getX(), p.getY());
 		this->_screen.flush();

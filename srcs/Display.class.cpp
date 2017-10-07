@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 18:49:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 19:12:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,10 @@ void	Display::_drawMenu(void)
 
 	// bottom
 	for (int i = 1; i < width; i++)
+	{
 		this->putstr("-", i, 6);
+		this->putstr("-", i, 30);
+	}
 
 	// display of informations
 	std::stringstream	infos;
@@ -159,4 +162,10 @@ int		Display::getCols(void) const
 void	Display::debug(std::ostream &target) const
 {
 	target << "Display: " << this->_win << " [" << this->getCols() << "x" << this->getRows() << "]" << std::endl;
+}
+
+
+void	Display::clearScreen(void)
+{
+	clear();
 }

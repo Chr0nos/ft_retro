@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:57 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 18:48:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 19:08:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class Display
 		int		getRows(void) const;
 		int		getCols(void) const;
 		void	debug(std::ostream &target) const;
+		void	clearScreen(void);
 
 
 	private:
