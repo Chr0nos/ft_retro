@@ -6,13 +6,14 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:47:40 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 19:38:16 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 21:08:39 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Gun.class.hpp"
 
-Gun::Gun(int x, int y, int dir) : Position(x, y), _c("-"), _dir(dir)
+Gun::Gun(int x, int y, int dir, int maxX) : Position(x, y), _c("-"), _dir(dir),
+											_del(false), _maxX(maxX)
 {
 }
 
@@ -40,11 +41,14 @@ Gun &		Gun::operator=(Gun const & rhs)
 void		Gun::move(void)
 {
 	this->setX(this->getX() + this->_dir);
+	if (this->getX() > this->_maxX)
+		this->_del = true;
 }
 
 void		Gun::makeDamage(Entity & victim)
 {
 	victim.setDamage(100);
+	this->_del = true;
 }
 
 std::string	Gun::getC(void) const
@@ -75,4 +79,9 @@ int			Gun::getX(void) const
 int			Gun::getY(void) const
 {
 	return (this->Position::getY());
+}
+
+bool		Gun::toDelete(void) const
+{
+	return this->_del;
 }
