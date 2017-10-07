@@ -6,13 +6,15 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 22:06:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 23:44:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Game.class.hpp"
+#include "Obstacle.class.hpp"
 #include "Player.class.hpp"
 #include "BulletHolder.class.hpp"
+#include "EntityHolder.class.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -40,7 +42,7 @@ Game& Game::operator=(Game const & src)
 	}
 	return (*this);
 }
-#include <time.h>
+
 void	Game::start(void)
 {
 	std::clock_t		t;
@@ -48,6 +50,7 @@ void	Game::start(void)
 	std::stringstream	keyString;
 	Player				p(10, 10, this->_screen.getCols());
 	BulletHolder		bh;
+	EntityHolder		eh;
 
 	t = 0;
 	timeout(50);
@@ -57,10 +60,16 @@ void	Game::start(void)
 		c = getch();
 		if ((c == static_cast<int>('q')) || (c == KEY_EXIT))
 			return ;
-		t = std::clock() - t;
+		t = (std::clock() - t);
 		if (t < 50)
-			;
+			napms(static_cast<int>(t / 1000 - 50));
+		{
+			Obstacle	*truc;
+			int halfscreen = this->_screen.getCols() >> 1;
 
+			truc = new Obstacle(halfscreen + std::rand() % halfscreen, 10 + std::rand() % 20);
+			eh.store(truc);
+		}
 		if (c != -1)
 		{
 			keyString.str("");
@@ -68,7 +77,6 @@ void	Game::start(void)
 		}
 		this->_screen.clearScreen();
 		this->_screen.putstr(keyString.str(), 2, 5);
-		//this->_screen.putstr(" ", p.getX(), p.getY());
 		if ((c == 'w') || (c == KEY_UP))
 			p.move(0, -1);
 		else if ((c == 's') || (c == KEY_DOWN))
@@ -85,6 +93,8 @@ void	Game::start(void)
 		}
 		bh.move();
 		bh.show(this->_screen);
+		eh.move();
+		eh.show(this->_screen);
 		this->_screen.putstr(p.getC(), p);
 		this->_screen.flush();
 		this->_screen.setCursorAt(0, 0);

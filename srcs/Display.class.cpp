@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 22:09:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 22:24:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	Display::setVisible(bool const state)
 		raw();
 		cbreak();
 		noecho();
+		nodelay(stdscr, true);
 	}
 	else
 		noraw();
