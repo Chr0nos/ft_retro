@@ -6,12 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 19:31:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 22:06:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Game.class.hpp"
 #include "Player.class.hpp"
+#include "BulletHolder.class.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -39,22 +40,27 @@ Game& Game::operator=(Game const & src)
 	}
 	return (*this);
 }
-
+#include <time.h>
 void	Game::start(void)
 {
 	std::clock_t		t;
 	int					c;
 	std::stringstream	keyString;
 	Player				p(10, 10, this->_screen.getCols());
+	BulletHolder		bh;
 
-	timeout(100);
+	t = 0;
+	timeout(50);
 	while (1)
 	{
 		t = std::clock();
 		c = getch();
-		if (c == static_cast<int>('q'))
+		if ((c == static_cast<int>('q')) || (c == KEY_EXIT))
 			return ;
 		t = std::clock() - t;
+		if (t < 50)
+			;
+
 		if (c != -1)
 		{
 			keyString.str("");
@@ -63,23 +69,25 @@ void	Game::start(void)
 		this->_screen.clearScreen();
 		this->_screen.putstr(keyString.str(), 2, 5);
 		//this->_screen.putstr(" ", p.getX(), p.getY());
-		if (c == 'w')
+		if ((c == 'w') || (c == KEY_UP))
 			p.move(0, -1);
-		else if (c == 's')
+		else if ((c == 's') || (c == KEY_DOWN))
 			p.move(0, 1);
-		else if (c == 'd')
+		else if ((c == 'd') || (c == KEY_RIGHT))
 			p.move(2, 0);
-		else if (c == 'a')
+		else if ((c == 'a') || (c == KEY_LEFT))
 			p.move(-2, 0);
 		else if (c == ' ')
 		{
 			IBullet		*bullet = p.fire();
-			this->_screen.putstr(bullet->getC(), bullet->getX(), bullet->getY());
-			delete bullet;
+			if (!bh.store(bullet))
+				delete bullet;
 		}
-		// place the Display/events loop here
-		this->_screen.putstr(p.getC(), p.getX(), p.getY());
+		bh.move();
+		bh.show(this->_screen);
+		this->_screen.putstr(p.getC(), p);
 		this->_screen.flush();
+		this->_screen.setCursorAt(0, 0);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 19:12:53 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 22:09:08 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,16 @@ void	Display::setVisible(bool const state)
 	{
 		// opening of the display
 		initscr();
+		keypad(stdscr, true);
 		getmaxyx(stdscr, this->_rows, this->_cols);
 		start_color();
 		init_pair(1, COLOR_RED, COLOR_BLACK);
 		init_pair(2, COLOR_GREEN, COLOR_BLACK);
 		init_pair(3, COLOR_WHITE, COLOR_BLACK);
+		init_pair(4, COLOR_CYAN, COLOR_BLACK);
 		raw();
+		cbreak();
+		noecho();
 	}
 	else
 		noraw();
@@ -147,6 +151,11 @@ void	Display::_drawMenu(void)
 void	Display::setCursorAt(Position const & pos)
 {
 	move(pos.getY(), pos.getX());
+}
+
+void	Display::setCursorAt(int x, int y)
+{
+	move(y, x);
 }
 
 int		Display::getRows(void) const
