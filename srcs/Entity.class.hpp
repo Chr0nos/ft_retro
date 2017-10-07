@@ -6,7 +6,7 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:42:58 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 16:23:09 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 16:44:19 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ private:
 	Entity(void);
 
 };
+
+std::ostream &	operator<<(std::ostream & o, Entity const & rhs);
 
 #endif

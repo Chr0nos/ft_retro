@@ -6,7 +6,7 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:42:56 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 16:31:19 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 16:45:20 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,11 @@ bool		Entity::isDead(void) const
 	if (this->_HP <= 0)
 		return true;
 	return false;
+}
+
+std::ostream &	operator<<(std::ostream & o, Entity const & rhs)
+{
+	o << rhs.getC();
+
+	return o;
 }
