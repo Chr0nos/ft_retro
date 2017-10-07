@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 19:16:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 19:18:18 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	Game::start(void)
 	std::clock_t		t;
 	int					c;
 	std::stringstream	keyString;
-	Player				p(10, 10);
+	Player				p(10, 10, this->_screen.getCols());
 
 	timeout(100);
 	while (1)

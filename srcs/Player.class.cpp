@@ -6,13 +6,13 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:11:46 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 18:22:14 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 19:21:19 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Player.class.hpp"
 
-Player::Player(int x, int y) : Entity(x, y, ">", 1), _weapon("gun")
+Player::Player(int x, int y, int maxX) : Entity(x, y, ">", 1), _weapon("gun"), _maxX(maxX - 1)
 {
 }
 
@@ -33,6 +33,21 @@ Player &	Player::operator=(Player const & rhs)
 	}
 
 	return *this;
+}
+
+void				Player::move(int deltaX, int deltaY)
+{
+	this->setX(this->getX() + deltaX);
+	this->setY(this->getY() + deltaY);
+	if (this->getY() < 7)
+		this->setY(7);
+	if (this->getY() > 29)
+		this->setY(29);
+	if (this->getX() < 0)
+		this->setX(0);
+	if (this->getX() > this->_maxX)
+		this->setX(this->_maxX);
+	
 }
 
 std::string const	Player::getWeapon(void) const
