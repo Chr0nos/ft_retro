@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 17:22:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 18:49:21 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void Display::init(void)
 	this->_visible = false;
 	this->_cols = 0;
 	this->_rows = 0;
+	this->_frame = 0;
 }
 
 bool Display::isVisible(void) const
@@ -70,8 +71,10 @@ void	Display::setVisible(bool const state)
 		init_pair(1, COLOR_RED, COLOR_BLACK);
 		init_pair(2, COLOR_GREEN, COLOR_BLACK);
 		init_pair(3, COLOR_WHITE, COLOR_BLACK);
+		raw();
 	}
 	else
+		noraw();
 		endwin();
 	this->_visible = state;
 }
@@ -83,21 +86,22 @@ void	Display::show(std::string const & message)
 	printw(message.c_str());
 }
 
-void	Display::putstr(std::string const & str, unsigned int x, unsigned int y)
+void	Display::putstr(std::string const & str, int x, int y)
 {
-	move(static_cast<int>(y), static_cast<int>(x));
+	move(y, x);
 	printw(str.c_str());
 }
 
 void	Display::putstr(std::string const & str, Position const & pos)
 {
-	this->putstr(str, static_cast<unsigned int>(pos.getX()), static_cast<unsigned int>(pos.getY()));
+	this->putstr(str, pos.getX(), pos.getY());
 }
 
 // do the real draw into the screen
 void	Display::flush(void)
 {
 	this->_drawMenu();
+	this->_frame++;
 	refresh();
 }
 
@@ -105,29 +109,29 @@ void	Display::flush(void)
 // this method display the top menu in the game
 void	Display::_drawMenu(void)
 {
-	const unsigned int		width = static_cast<unsigned int>(this->getCols()) - 1;
+	const int		width = this->getCols() - 1;
 
 	attron(COLOR_PAIR(1));
 	// top
-	for (unsigned int i = 1; i < width; i++)
+	for (int i = 1; i < width; i++)
 		this->putstr("-", i, 0);
 
 	// sides
-	for (unsigned int i = 1 ; i < 7 ; i++)
+	for (int i = 1 ; i < 7 ; i++)
 	{
 		this->putstr("|", 0, i);
 		this->putstr("|", width, i);
 	}
 
 	// bottom
-	for (unsigned int i = 1; i < width; i++)
+	for (int i = 1; i < width; i++)
 		this->putstr("-", i, 6);
 
 	// display of informations
 	std::stringstream	infos;
 
 	attron(COLOR_PAIR(2));
-	infos << "enemies alive: " << 42 << " - other field: " << 4;
+	infos << "enemies alive: " << 42 << " - other field: " << 4 << " - frame: " << this->_frame;
 	this->putstr(infos.str(), 3, 2);
 
 	// repositioning the cursor

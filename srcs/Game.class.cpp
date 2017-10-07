@@ -6,13 +6,16 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 17:51:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 18:59:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Game.class.hpp"
+#include "Player.class.hpp"
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <ctime>
 
 Game::Game(void)
 {
@@ -39,12 +42,39 @@ Game& Game::operator=(Game const & src)
 
 void	Game::start(void)
 {
-	// place the Display/events loop here
-	this->_screen.flush();
+	std::clock_t		t;
+	int					c;
+	std::stringstream	keyString;
+	Player				p(10, 10);
 
-
-	// screen.debug(std::cout);
-	getch();
+	timeout(100);
+	while (1)
+	{
+		t = std::clock();
+		c = getch();
+		if (c == static_cast<int>('q'))
+			return ;
+		t = std::clock() - t;
+		if (c != -1)
+		{
+			keyString.str("");
+			keyString << "last input: " << c << " - t: " << t;
+		}
+		this->_screen.putstr(keyString.str(), 2, 5);
+		//up
+		this->_screen.putstr(" ", p.getX(), p.getY());
+		if (c == 'w')
+			p.move(0, -1);
+		else if (c == 's')
+			p.move(0, 1);
+		else if (c == 'd')
+			p.move(1, 0);
+		else if (c == 'a')
+			p.move(-1, 0);
+		// place the Display/events loop here
+		this->_screen.putstr(p.getC(), p.getX(), p.getY());
+		this->_screen.flush();
+	}
 }
 
 bool	Game::isReady(void) const

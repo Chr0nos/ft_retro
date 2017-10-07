@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:57 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 17:25:16 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 18:48:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Display
 		Display& operator=(Display const & src);
 		void	show(std::string const & message);
 		void	flush(void);
-		void	putstr(std::string const & str, unsigned int x, unsigned int y);
+		void	putstr(std::string const & str, int x, int y);
 		void	putstr(std::string const & src, Position const & pos);
 		void	setCursorAt(Position const & pos);
 		WINDOW	*getWin(void) const;
@@ -38,11 +38,12 @@ class Display
 
 
 	private:
-		void	_drawMenu(void);
-		void	init(void);
-		bool	_visible;
-		int		_rows;
-		int		_cols;
+		void				_drawMenu(void);
+		void				init(void);
+		bool				_visible;
+		int					_rows;
+		int					_cols;
+		unsigned int		_frame;
 		WINDOW	*_win;
 };
 
