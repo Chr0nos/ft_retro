@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Display.class.hpp                                  :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/07 13:30:57 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 14:24:18 by snicolet         ###   ########.fr       */
+/*   Created: 2017/10/07 13:32:33 by snicolet          #+#    #+#             */
+/*   Updated: 2017/10/07 14:24:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DISPLAY_HPP
-# define DISPLAY_HPP
-# include <string>
-# include <iostream>
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <ncurses.h>
+#include "Display.class.hpp"
 
-class Display
+int		main(void)
 {
-	public:
-		Display(void);
-		Display(Display const & src);
-		~Display(void);
-		void	setVisible(bool const state);
-		bool	isVisible(void) const;
-		Display& operator=(Display const & src);
-		void	show(std::string const & message);
-		void	flush(void);
+	Display		screen;
 
-	private:
-		void	init(void);
-		bool	_visible;
-
-};
-
-#endif
+	std::srand(static_cast<unsigned int>(std::time(NULL)));
+	screen.setVisible(true);
+	screen.show("hello world\n");
+	screen.show("Other thing");
+	screen.flush();
+	getch();
+	return (0);
+}
