@@ -1,7 +1,7 @@
 NAME=ft_retro
 FLAGS=-Wall -Werror -Wextra -Weverything -std=c++98
 CC=clang++
-OBJS=main.o Display.class.o
+OBJS=main.o Display.class.o Position.class.o
 LINKER=-lncurses
 
 all: $(NAME)
