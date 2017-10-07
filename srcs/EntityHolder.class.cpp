@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:04:51 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 23:33:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 23:54:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,12 @@ void	EntityHolder::show(Display &screen)
 	for (unsigned int i = 0; i < this->_maxItems; i++)
 	{
 		e = this->_items[i];
-		if (e)
+		if (!e)
+			;
+		else if (e->getX() > 0)
 			screen.putstr(e->getC(), *e);
+		else
+			this->remove(i);
 	}
 }
 

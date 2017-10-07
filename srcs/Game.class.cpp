@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 23:44:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 23:55:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	Game::start(void)
 			Obstacle	*truc;
 			int halfscreen = this->_screen.getCols() >> 1;
 
-			truc = new Obstacle(halfscreen + std::rand() % halfscreen, 10 + std::rand() % 20);
+			truc = new Obstacle(halfscreen + std::rand() % halfscreen, 6 + std::rand() % 25);
 			eh.store(truc);
 		}
 		if (c != -1)
