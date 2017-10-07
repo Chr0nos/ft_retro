@@ -6,7 +6,7 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:42:56 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 16:22:22 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 16:31:19 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ Entity::~Entity(void)
 
 Entity &	Entity::operator=(Entity const & rhs)
 {
-	this->Position::operator=(rhs);
-
-	this->_HP = rhs.getHP();
+	if (this != &rhs)
+	{
+		this->Position::operator=(rhs);
+		this->_HP = rhs.getHP();
+	}
 
 	return *this;
 }
