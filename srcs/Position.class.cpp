@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Position.class.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:24:17 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 15:40:43 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 16:14:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ Position::~Position(void)
 
 Position &	Position::operator=(Position const & rhs)
 {
-	this->_x = rhs.getX();
-	this->_y = rhs.getY();
-
+	if (&rhs == this)
+	{
+		this->_x = rhs.getX();
+		this->_y = rhs.getY();
+	}
 	return *this;
 }
 

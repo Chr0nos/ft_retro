@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:57 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 15:44:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 16:09:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ class Display
 		void	flush(void);
 		void	putstr(std::string const & str, unsigned int x, unsigned int y);
 		void	putstr(std::string const & src, Position const & pos);
+		void	setCursorAt(Position const & pos);
 
 
 	private:
+		void	_drawMenu(void);
 		void	init(void);
 		bool	_visible;
 
