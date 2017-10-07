@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   IBullet.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:37:54 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 18:40:51 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 19:31:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ public:
 	virtual void		makeDamage(Entity & victim) = 0;
 	virtual std::string	getC(void) const = 0;
 	virtual void		setC(std::string c) = 0;
+	virtual int			getX(void) const = 0;
+	virtual int			getY(void) const = 0;
 	virtual int			getDir(void) const = 0;
 	virtual void		setDir(int pos) = 0;
 

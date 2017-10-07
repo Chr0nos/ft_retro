@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 19:18:18 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 19:31:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	Game::start(void)
 		else if (c == ' ')
 		{
 			IBullet		*bullet = p.fire();
+			this->_screen.putstr(bullet->getC(), bullet->getX(), bullet->getY());
 			delete bullet;
 		}
 		// place the Display/events loop here

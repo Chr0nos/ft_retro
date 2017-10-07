@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Gun.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:47:41 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 18:25:00 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 19:37:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ public:
 	void		setC(std::string c);
 	int			getDir(void) const;
 	void		setDir(int dir);
+	int			getX(void) const;
+	int			getY(void) const;
 
 private:
 	std::string	_c;

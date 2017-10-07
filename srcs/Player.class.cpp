@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Player.class.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:11:46 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 19:21:19 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 19:39:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void				Player::move(int deltaX, int deltaY)
 		this->setX(0);
 	if (this->getX() > this->_maxX)
 		this->setX(this->_maxX);
-	
+
 }
 
 std::string const	Player::getWeapon(void) const

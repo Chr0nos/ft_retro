@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Gun.class.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:47:40 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 18:23:12 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 19:38:16 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,14 @@ int			Gun::getDir(void) const
 void		Gun::setDir(int dir)
 {
 	this->_dir = dir;
+}
+
+int			Gun::getX(void) const
+{
+	return (this->Position::getX());
+}
+
+int			Gun::getY(void) const
+{
+	return (this->Position::getY());
 }
