@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Player.class.hpp                                   :+:      :+:    :+:   */
+/*   IBullet.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/07 17:11:47 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 18:19:41 by abossi           ###   ########.fr       */
+/*   Created: 2017/10/07 17:37:54 by abossi            #+#    #+#             */
+/*   Updated: 2017/10/07 18:40:51 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_CLASS_HPP
-#define PLAYER_CLASS_HPP
+#ifndef IBULLET_CLASS_HPP
+#define IBULLET_CLASS_HPP
 
+#include <iostream>
 #include "Entity.class.hpp"
-#include "IBullet.class.hpp"
-#include "Gun.class.hpp"
 
-class Player : public Entity
+class IBullet
 {
 
 public:
-	Player(int x, int y);
-	Player(Player & src);
-	~Player(void);
-
-	Player &	operator=(Player const & rhs);
-
-	std::string const	getWeapon(void) const;
-	void				setWeapon(std::string weapon);
-	IBullet *			fire(void);
+	virtual ~IBullet();
+	virtual void		move(void) = 0;
+	virtual void		makeDamage(Entity & victim) = 0;
+	virtual std::string	getC(void) const = 0;
+	virtual void		setC(std::string c) = 0;
+	virtual int			getDir(void) const = 0;
+	virtual void		setDir(int pos) = 0;
 
 private:
-	std::string	_weapon;
-
-	Player(void);
-
 };
+
+std::ostream &	operator<<(std::ostream & o, IBullet const & bul);
 
 #endif

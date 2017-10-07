@@ -6,7 +6,7 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:42:56 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 16:45:20 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/07 18:19:14 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			Entity::getHP(void) const
 	return this->_HP;
 }
 
-void		Entity::getDamage(int dmg)
+void		Entity::setDamage(int dmg)
 {
 	if (this->_HP > 0 && dmg > 0)
 		this->_HP -= dmg;

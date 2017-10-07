@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Player.class.hpp                                   :+:      :+:    :+:   */
+/*   IBullet.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/07 17:11:47 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 18:19:41 by abossi           ###   ########.fr       */
+/*   Created: 2017/10/07 18:03:23 by abossi            #+#    #+#             */
+/*   Updated: 2017/10/07 18:41:15 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_CLASS_HPP
-#define PLAYER_CLASS_HPP
-
-#include "Entity.class.hpp"
+#include <iostream>
 #include "IBullet.class.hpp"
-#include "Gun.class.hpp"
 
-class Player : public Entity
+IBullet::~IBullet(void)
 {
+}
 
-public:
-	Player(int x, int y);
-	Player(Player & src);
-	~Player(void);
+std::ostream &	operator<<(std::ostream & o, IBullet const & bul)
+{
+	o << bul.getC();
 
-	Player &	operator=(Player const & rhs);
-
-	std::string const	getWeapon(void) const;
-	void				setWeapon(std::string weapon);
-	IBullet *			fire(void);
-
-private:
-	std::string	_weapon;
-
-	Player(void);
-
-};
-
-#endif
+	return o;
+}
