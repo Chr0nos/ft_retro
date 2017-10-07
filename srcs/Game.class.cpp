@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 18:59:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/07 19:04:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	Game::start(void)
 		else if (c == 's')
 			p.move(0, 1);
 		else if (c == 'd')
-			p.move(1, 0);
+			p.move(2, 0);
 		else if (c == 'a')
-			p.move(-1, 0);
+			p.move(-2, 0);
 		// place the Display/events loop here
 		this->_screen.putstr(p.getC(), p.getX(), p.getY());
 		this->_screen.flush();
