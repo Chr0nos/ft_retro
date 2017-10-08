@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 11:41:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 11:45:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	Game::start(void)
 
 	t = 0;
 	timeout(0);
+	c = getch();
 	while (1)
 	{
 		t = std::clock();
-		c = getch();
-		while (std::clock() < (t + 30000))
+		while (std::clock() < (t + 15000))
 		{
 			int tmp = getch();
 			if (tmp != -1)
@@ -67,7 +67,8 @@ void	Game::start(void)
 		if ((c == static_cast<int>('q')) || (c == KEY_EXIT))
 			return ;
 		t = (std::clock() - t);
-		if (!(t % 5))
+
+		if (!(std::rand() % 20))
 		{
 			Obstacle	*truc;
 
@@ -84,8 +85,13 @@ void	Game::start(void)
 		this->events(c, p, bh);
 		bh.move();
 		bh.show(this->_screen);
-		eh.move();
+		if (!(this->_screen.getFrame() % 4))
+		{
+			eh.move();
+		}
 		eh.show(this->_screen);
+		if (eh.haveColision(p))
+			return ;
 		this->_screen.putstr(p.getC(), p);
 		this->_screen.flush();
 		this->_screen.setCursorAt(0, 0);
@@ -106,8 +112,10 @@ int		Game::sayErr(std::string msg)
 	return (1);
 }
 
-void	Game::events(int const c, Player & p, BulletHolder & bh)
+void	Game::events(int & c, Player & p, BulletHolder & bh)
 {
+	if (!(this->_screen.getFrame() % 2))
+		return ;
 	if ((c == 'w') || (c == KEY_UP))
 		p.move(0, -1);
 	else if ((c == 's') || (c == KEY_DOWN))
@@ -122,4 +130,5 @@ void	Game::events(int const c, Player & p, BulletHolder & bh)
 		if (!bh.store(bullet))
 			delete bullet;
 	}
+	c = getch();
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:04:51 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 23:54:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 11:18:59 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,16 @@ EntityHolder& EntityHolder::operator=(EntityHolder const & src)
 		}
 	}
 	return (*this);
+}
+
+bool EntityHolder::haveColision(Entity const & ref)
+{
+	for (unsigned int i = 0; i < this->_maxItems; i++)
+	{
+		if (this->_items[i] && *(this->_items[i]) == ref)
+			return (true);
+	}
+	return (false);
 }
 
 bool EntityHolder::store(Entity* entity)

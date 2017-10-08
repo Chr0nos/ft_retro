@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:02:52 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 23:33:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 11:14:16 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class EntityHolder
 						EntityHolder(EntityHolder const & src);
 						~EntityHolder(void);
 		EntityHolder&	operator=(EntityHolder const & src);
+		bool			haveColision(Entity const & ref);
 		void			clear(void);
 		Entity*			getItem(unsigned int const index) const;
 		bool			store(Entity *entity);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:28:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 11:40:54 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 11:45:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ class Game
 		void		start(void);
 		bool		isReady(void) const;
 		int			sayErr(std::string msg);
-		void		events(int const c, Player & p, BulletHolder & bh);
 
 	private:
+		void		events(int & c, Player & p, BulletHolder & bh);
 		Display		_screen;
 
 };
