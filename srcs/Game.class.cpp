@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 18:06:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 18:18:34 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "BulletHolder.class.hpp"
 #include "EntityHolder.class.hpp"
 #include "Enemy.class.hpp"
+#include "Plasma.class.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -191,17 +192,12 @@ void	Game::events(int & c, Player & p, BulletHolder & bh)
 		timeout(0);
 	}
 	// ubber shoot !
-	// else if (c == 'u')
-	// {
-	// 	for (unsigned int i = 6; i < 28; i++)
-	// 	{
-	// 		IBullet		*shoot;
-	// 		shoot = p.fire();
-	// 		shoot->setColor(6);
-	// 		shoot->setC("~");
-	// 		if (!(bh.store(shoot)))
-	// 			delete shoot;
-	// 	}
-	// }
+	else if (c == 'u')
+	{
+		IBullet		*shoot;
+		shoot = new Plasma(p.getX(), p.getY(), 1, this->_screen.getCols(), 6);
+		if (!(bh.store(shoot)))
+			delete shoot;
+	}
 	c = getch();
 }
