@@ -6,13 +6,15 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:42:56 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 13:41:52 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 14:56:17 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Entity.class.hpp"
 
-Entity::Entity(int x, int y, std::string c, int hp) : Position(x, y), _HP(hp), _c(c)
+Entity::Entity(int x, int y, std::string c, int hp, int color) : Position(x, y),
+																 _HP(hp), _c(c),
+																 _color(color)
 {
 }
 
@@ -60,6 +62,16 @@ std::string	Entity::getC(void) const
 void		Entity::setC(std::string c)
 {
 	this->_c = c;
+}
+
+int			Entity::getColor(void) const
+{
+	return this->_color;
+}
+
+void		Entity::setColor(int color)
+{
+	this->_color = color;
 }
 
 void		Entity::move(int deltaX, int deltaY)

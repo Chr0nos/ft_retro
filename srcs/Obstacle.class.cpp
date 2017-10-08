@@ -6,13 +6,13 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 16:25:21 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 14:31:57 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 14:56:59 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Obstacle.class.hpp"
 
-Obstacle::Obstacle(int x, int y) : Entity(x, y, "#", 20)
+Obstacle::Obstacle(int x, int y) : Entity(x, y, "#", 20, 0)
 {
 }
 
