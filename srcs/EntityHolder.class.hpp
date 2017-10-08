@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:02:52 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 13:17:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 15:49:07 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class EntityHolder
 		void			show(Display &screen);
 		void			remove(unsigned int index);
 		unsigned int	count(void) const;
-		void			collisions(BulletHolder & bullets);
+		int				collisions(BulletHolder & bullets);
 		void			collisions(Entity & enity);
 
 	private:

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 15:04:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 15:50:32 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ bool	Game::start(void)
 	Player				p(10, 10, this->_screen.getCols());
 	BulletHolder		bh;
 	EntityHolder		eh;
+	int					score = 0;
 
 	t = 0;
 	timeout(0);
@@ -98,16 +99,17 @@ bool	Game::start(void)
 		keyString.str("");
 		keyString << "t: " << t << " - pos: " <<
 			p.getX() << "@" << p.getY() << " - active bullets: " <<
-			bh.count() << " - entities alives: " << eh.count();
+			bh.count() << " - entities alives: " << eh.count() <<
+			" - score: " << score;
 
 
 		this->events(c, p, bh);
 		bh.move();
-		eh.collisions(bh);
+		score += eh.collisions(bh);
 		if (!(this->_screen.getFrame() % 2))
 		{
 			eh.move();
-			eh.collisions(bh);
+			score += eh.collisions(bh);
 		}
 		if ((eh.haveColision(p)) || (p.isDead()))
 			return (true);

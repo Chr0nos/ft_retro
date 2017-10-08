@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/08 14:23:21 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 15:01:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 15:39:07 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ Enemy::~Enemy(void)
 
 IBullet* Enemy::fire(void) const
 {
-	return (new Gun(this->getX() - 1, this->getY(), -1, this->getX() + 1));
+	return (new Gun(this->getX() - 1, this->getY(), -1, this->getX() + 1, 1));
 }
