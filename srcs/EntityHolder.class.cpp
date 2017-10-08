@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:04:51 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 12:07:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 12:20:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ unsigned int EntityHolder::count(void) const
 
 void		EntityHolder::collisions(BulletHolder & bullets)
 {
-	const unsigned int max = bullets.getMaxBullets();
+	const unsigned int	max = bullets.getMaxBullets();
 	IBullet*			bullet;
 
 	for (unsigned int i = 0; i < max; i++)
@@ -153,6 +153,8 @@ void		EntityHolder::collisions(BulletHolder & bullets)
 			else if ((bullet->getX() == ent->getX()) && (bullet->getY() == ent->getY()))
 			{
 				bullet->makeDamage(*ent);
+				if (ent->isDead())
+					this->remove(i);
 			}
 		}
 	}

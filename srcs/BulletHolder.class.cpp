@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 21:03:58 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 12:02:04 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 12:26:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,7 @@ unsigned int	BulletHolder::move(void)
 			count++;
 			this->_bullets[i]->move();
 			if (this->_bullets[i]->toDelete())
-			{
-				delete this->_bullets[i];
-				this->_bullets[i] = nullptr;
-			}
+				this->remove(i);
 		}
 	}
 	return (count);

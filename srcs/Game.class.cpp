@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 12:12:08 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 12:44:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,19 +80,23 @@ void	Game::start(void)
 			keyString.str("");
 			keyString << "last input: " << c << " - t: " << t << " - pos: " << p.getX() << "@" << p.getY();
 		}
-		this->_screen.clearScreen();
-		this->_screen.putstr(keyString.str(), 2, 5);
+
 		this->events(c, p, bh);
 		bh.move();
 		eh.collisions(bh);
-		bh.show(this->_screen);
+
 		if (!(this->_screen.getFrame() % 4))
 		{
 			eh.move();
 		}
-		eh.show(this->_screen);
 		if (eh.haveColision(p))
 			return ;
+		// don't even dare to put something that display anything on the screen
+		// before thoses comments... (clipping prevent)
+		this->_screen.clearScreen();
+		this->_screen.putstr(keyString.str(), 2, 5);
+		bh.show(this->_screen);
+		eh.show(this->_screen);
 		this->_screen.putstr(p.getC(), p);
 		this->_screen.flush();
 		this->_screen.setCursorAt(0, 0);
