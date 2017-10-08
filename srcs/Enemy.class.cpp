@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/08 14:23:21 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 16:18:56 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 16:25:14 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Enemy::Enemy(int x, int y) : Entity::Entity(x, y, "<", 50, 5)
 
 Enemy::Enemy(Enemy & src) : Entity::Entity(src)
 {
+	*this = src;
 }
 
 Enemy::~Enemy(void)
@@ -29,7 +30,9 @@ Enemy::~Enemy(void)
 
 Enemy &		Enemy::operator=(Enemy const & rhs)
 {
-	*this = rhs;
+	this->Entity::operator=(rhs);
+
+	return *this;
 }
 
 IBullet*	Enemy::fire(void) const
