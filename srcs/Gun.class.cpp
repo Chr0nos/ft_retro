@@ -6,7 +6,7 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:47:40 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 15:08:17 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 16:37:19 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Gun &		Gun::operator=(Gun const & rhs)
 void		Gun::move(void)
 {
 	this->setX(this->getX() + this->_dir);
-	if (this->getX() > this->_maxX)
+	if (this->getX() > this->_maxX || this->getX() < 0)
 		this->_del = true;
 }
 
