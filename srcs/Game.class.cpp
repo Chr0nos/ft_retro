@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 16:13:37 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:21:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,9 @@ bool	Game::start(void)
 		this->events(c, p, bh);
 		bh.move();
 		score += eh.collisions(bh);
+
+		// player bullet catch and die
+		bh.colissions(p);
 		if (!(this->_screen.getFrame() % 2))
 		{
 			eh.move();

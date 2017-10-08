@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 21:01:40 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 13:33:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:17:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class BulletHolder
 		unsigned int	getMaxBullets(void) const;
 		void			remove(unsigned int const index);
 		unsigned int	count(void) const;
+		void			colissions(Entity & entity);
 
 	private:
 		void				init(void);

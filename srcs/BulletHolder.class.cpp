@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 21:03:58 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 16:04:54 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:20:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,20 @@ void		BulletHolder::remove(unsigned int const index)
 unsigned int		BulletHolder::count(void) const
 {
 	return (this->_activeBullets);
+}
+
+void				BulletHolder::colissions(Entity & entity)
+{
+	IBullet		*bullet;
+
+	for (unsigned int i = 0; i < this->_bulletsCount; i++)
+	{
+		bullet = this->_bullets[i];
+		if (!bullet)
+			continue ;
+		if ((bullet->getX() == entity.getX()) && (bullet->getY() == entity.getY()))
+		{
+			entity.setHP(0);
+		}
+	}
 }
