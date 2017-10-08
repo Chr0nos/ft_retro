@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 11:45:09 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 12:03:07 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	Game::start(void)
 		this->_screen.putstr(keyString.str(), 2, 5);
 		this->events(c, p, bh);
 		bh.move();
+		eh.collisions(bh);
 		bh.show(this->_screen);
 		if (!(this->_screen.getFrame() % 4))
 		{

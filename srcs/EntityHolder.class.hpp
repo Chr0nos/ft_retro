@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:02:52 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 11:14:16 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 11:50:31 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ENTITYHOLDER_CLASS_HPP
 # include "Entity.class.hpp"
 # include "Display.class.hpp"
+# include "BulletHolder.class.hpp"
 
 class EntityHolder
 {
@@ -30,6 +31,7 @@ class EntityHolder
 		void			show(Display &screen);
 		void			remove(unsigned int index);
 		unsigned int	count(void) const;
+		void			collisions(BulletHolder & bullets);
 
 	private:
 		void			init(void);

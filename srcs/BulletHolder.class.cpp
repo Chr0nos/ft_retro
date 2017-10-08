@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 21:03:58 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 21:49:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 12:02:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,20 @@ void	BulletHolder::show(Display &screen) const
 			screen.putstr(bullet->getC(), bullet->getX(), bullet->getY());
 	}
 	attron(COLOR_PAIR(3));
+}
+
+unsigned int BulletHolder::getMaxBullets(void) const
+{
+	return (this->_bulletsCount);
+}
+
+void		BulletHolder::remove(unsigned int const index)
+{
+	if (index >= this->_bulletsCount)
+		return ;
+	if (this->_bullets[index])
+	{
+		delete this->_bullets[index];
+		this->_bullets[index] = nullptr;
+	}
 }
