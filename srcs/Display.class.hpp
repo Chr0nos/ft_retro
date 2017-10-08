@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:57 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 11:30:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:27:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class Display
 		void	debug(std::ostream &target) const;
 		void	clearScreen(void);
 		unsigned int getFrame(void) const;
+		void	resetFrameCounter(void);
 
 
 	private:

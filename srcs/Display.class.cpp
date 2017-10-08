@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 14:59:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:27:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,4 +184,9 @@ void	Display::clearScreen(void)
 unsigned int	Display::getFrame(void) const
 {
 	return (this->_frame);
+}
+
+void			Display::resetFrameCounter(void)
+{
+	this->_frame = 0;
 }

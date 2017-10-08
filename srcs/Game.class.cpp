@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 16:21:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:27:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ bool	Game::start(void)
 	EntityHolder		eh;
 	int					score = 0;
 
+	this->_screen.resetFrameCounter();
 	t = 0;
 	timeout(0);
 	c = getch();
