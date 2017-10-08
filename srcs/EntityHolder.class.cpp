@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:04:51 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 12:20:56 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 13:20:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,25 @@ void		EntityHolder::collisions(BulletHolder & bullets)
 				if (ent->isDead())
 					this->remove(i);
 			}
+		}
+	}
+}
+
+void		EntityHolder::collisions(Entity & entity)
+{
+	int const	colissions_dmg = 50;
+	Entity		*cent;
+	int const	ex = entity.getX();
+	int const	ey = entity.getY();
+
+	for (unsigned int i = 0; i < this->_maxItems; i++)
+	{
+		cent = this->_items[i];
+		if (!cent)
+			continue ;
+		if ((cent->getX() == ex) && (cent->getY() == ey))
+		{
+			entity.setDamage(colissions_dmg);
 		}
 	}
 }

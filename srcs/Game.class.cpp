@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 13:07:52 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 13:23:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ Game& Game::operator=(Game const & src)
 	return (*this);
 }
 
+// return a boolean: true = need to restart a new game
+// false means "hey we'r done here, dont restart"
 bool	Game::start(void)
 {
 	std::clock_t		t;
@@ -68,6 +70,7 @@ bool	Game::start(void)
 			return (false);
 		t = (std::clock() - t);
 
+		// Obstacles generation
 		if (!(std::rand() % 20))
 		{
 			Obstacle	*truc;
@@ -83,13 +86,12 @@ bool	Game::start(void)
 
 		this->events(c, p, bh);
 		bh.move();
-		eh.collisions(bh);
-
 		if (!(this->_screen.getFrame() % 4))
 		{
 			eh.move();
 		}
-		if (eh.haveColision(p))
+		eh.collisions(bh);
+		if ((eh.haveColision(p)) || (p.isDead()))
 			return (true);
 		// don't even dare to put something that display anything on the screen
 		// before thoses comments... (clipping prevent)
