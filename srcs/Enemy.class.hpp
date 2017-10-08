@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/08 11:57:38 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 12:10:06 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 14:31:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENEMY_CLASS_HPP
 #define ENEMY_CLASS_HPP
+#include "Entity.class.hpp"
+#include "IBullet.class.hpp"
 
-class Enemy : public Player
+class Enemy : public Entity
 {
+	public:
+		Enemy(int x, int y);
+		Enemy(Enemy & src);
+		~Enemy(void);
+		IBullet* fire(void) const;
 
-public:
-	Enemy(int x, int y);
-	Enemy(Enemy & src);
-
-
-private:
-	Enemy(void);
-
-}
+	private:
+		Enemy(void);
+};
 
 #endif

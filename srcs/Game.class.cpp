@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 14:04:02 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 14:45:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Player.class.hpp"
 #include "BulletHolder.class.hpp"
 #include "EntityHolder.class.hpp"
+#include "Enemy.class.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -54,6 +55,15 @@ bool	Game::start(void)
 	BulletHolder		bh;
 	EntityHolder		eh;
 
+	{
+		Enemy	*e = new Enemy(150, 10);
+		IBullet	*bullet;
+		eh.store(e);
+		bullet = e->fire();
+		if (!bh.store(bullet))
+			delete bullet;
+	}
+	eh.store(new Obstacle(100, 10));
 	t = 0;
 	timeout(0);
 	c = getch();
