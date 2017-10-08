@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 14:04:02 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 14:38:47 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	Game::start(void)
 	while (1)
 	{
 		t = std::clock();
-		while (std::clock() < (t + 15000))
+		while (std::clock() < (t + 20000 - this->_screen.getFrame() * 2))
 		{
 			int tmp = getch();
 			if (tmp != -1)
@@ -71,7 +71,7 @@ bool	Game::start(void)
 		t = (std::clock() - t);
 
 		// Obstacles generation
-		if (!(std::rand() % 20))
+		if (!(std::rand() % 10))
 		{
 			Obstacle	*truc;
 
