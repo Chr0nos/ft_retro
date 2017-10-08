@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 13:23:35 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 13:30:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,11 @@ void	Game::events(int & c, Player & p, BulletHolder & bh)
 		p.move(2, 0);
 	else if ((c == 'a') || (c == KEY_LEFT))
 		p.move(-2, 0);
+	else if (c == 'p')
+	{
+		timeout(-1);
+		while ((c = getch()) != 'p');
+		timeout(0);
+	}
 	c = getch();
 }
