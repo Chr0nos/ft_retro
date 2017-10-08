@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 00:00:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 10:46:23 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,17 @@ void	Game::start(void)
 	EntityHolder		eh;
 
 	t = 0;
-	timeout(50);
+	timeout(0);
 	while (1)
 	{
 		t = std::clock();
 		c = getch();
+		while (std::clock() < (t + 30000))
+		{
+			int tmp = getch();
+			if (tmp != -1)
+				c = tmp;
+		}
 		if ((c == static_cast<int>('q')) || (c == KEY_EXIT))
 			return ;
 		t = (std::clock() - t);
