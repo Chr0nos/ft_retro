@@ -6,7 +6,7 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:11:46 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 15:00:39 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 15:10:20 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void				Player::setWeapon(std::string weapon)
 IBullet *			Player::fire(void)
 {
 	if (this->_weapon == "gun")
-		return new Gun(this->getX() + 1, this->getY(), 1, this->_maxX);
-	return new Gun(this->getX() + 1, this->getY(), 1, this->_maxX);
+		return new Gun(this->getX() + 1, this->getY(), 1, this->_maxX, 4);
+	return new Gun(this->getX() + 1, this->getY(), 1, this->_maxX, 4);
 }

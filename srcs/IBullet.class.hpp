@@ -6,7 +6,7 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:37:54 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 21:02:56 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 15:06:26 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ public:
 	virtual void		setC(std::string c) = 0;
 	virtual int			getX(void) const = 0;
 	virtual int			getY(void) const = 0;
+	virtual int			getColor(void) = 0;
+	virtual void		setColor(int color) = 0;
 	virtual int			getDir(void) const = 0;
 	virtual void		setDir(int pos) = 0;
 	virtual bool		toDelete(void) const = 0;

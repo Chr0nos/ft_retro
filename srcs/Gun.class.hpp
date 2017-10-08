@@ -6,7 +6,7 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:47:41 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 21:07:25 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 15:09:18 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Gun : public Position, public IBullet
 {
 
 public:
-	Gun(int x, int y, int dir, int maxX);
+	Gun(int x, int y, int dir, int maxX, int color);
 	Gun(Gun & src);
 	~Gun(void);
 
@@ -35,6 +35,8 @@ public:
 	void		setDir(int dir);
 	int			getX(void) const;
 	int			getY(void) const;
+	int			getColor(void);
+	void		setColor(int color);
 	bool		toDelete(void) const;
 
 private:
@@ -42,6 +44,7 @@ private:
 	int			_dir;
 	bool		_del;
 	int			_maxX;
+	int			_color;
 
 	Gun(void);
 
