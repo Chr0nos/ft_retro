@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 12:44:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 13:07:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Game& Game::operator=(Game const & src)
 	return (*this);
 }
 
-void	Game::start(void)
+bool	Game::start(void)
 {
 	std::clock_t		t;
 	int					c;
@@ -65,7 +65,7 @@ void	Game::start(void)
 				c = tmp;
 		}
 		if ((c == static_cast<int>('q')) || (c == KEY_EXIT))
-			return ;
+			return (false);
 		t = (std::clock() - t);
 
 		if (!(std::rand() % 20))
@@ -90,7 +90,7 @@ void	Game::start(void)
 			eh.move();
 		}
 		if (eh.haveColision(p))
-			return ;
+			return (true);
 		// don't even dare to put something that display anything on the screen
 		// before thoses comments... (clipping prevent)
 		this->_screen.clearScreen();

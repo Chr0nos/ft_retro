@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:32:33 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 17:51:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 13:08:05 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int		main(void)
 
 	if (!game.isReady())
 		return (game.sayErr("Please use a decent window size"));
-	game.start();
+	while (game.start());
 	return (0);
 }
