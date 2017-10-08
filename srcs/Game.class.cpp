@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 12:03:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 12:12:08 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,12 @@ int		Game::sayErr(std::string msg)
 
 void	Game::events(int & c, Player & p, BulletHolder & bh)
 {
+	if (c == ' ')
+	{
+		IBullet		*bullet = p.fire();
+		if (!bh.store(bullet))
+			delete bullet;
+	}
 	if (!(this->_screen.getFrame() % 2))
 		return ;
 	if ((c == 'w') || (c == KEY_UP))
@@ -125,11 +131,5 @@ void	Game::events(int & c, Player & p, BulletHolder & bh)
 		p.move(2, 0);
 	else if ((c == 'a') || (c == KEY_LEFT))
 		p.move(-2, 0);
-	else if (c == ' ')
-	{
-		IBullet		*bullet = p.fire();
-		if (!bh.store(bullet))
-			delete bullet;
-	}
 	c = getch();
 }

@@ -6,7 +6,7 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 16:25:21 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 16:35:00 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 12:21:05 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ Obstacle::Obstacle(Obstacle & src) : Entity(src)
 	*this = src;
 }
 
+Obstacle::~Obstacle(void)
+{
+}
+
 Obstacle &	Obstacle::operator=(Obstacle const & rhs)
 {
 	if (this != &rhs)
@@ -31,7 +35,7 @@ Obstacle &	Obstacle::operator=(Obstacle const & rhs)
 	return *this;
 }
 
-void		Obstacle::getDamage(int dmg)
+void		Obstacle::setDamage(int dmg)
 {
 	dmg = 0;
 }

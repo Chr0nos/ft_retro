@@ -6,7 +6,7 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 16:25:22 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 16:33:45 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 12:20:57 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ class Obstacle : public Entity
 public:
 	Obstacle(int x, int y);
 	Obstacle(Obstacle & src);
+	~Obstacle(void);
 
 	Obstacle &	operator=(Obstacle const & rhs);
 
-	void		getDamage(int dmg);
+	void		setDamage(int dmg);
 	void		move(int deltaX, int deltaY);
 
 private:
