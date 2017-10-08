@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 14:56:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 15:04:08 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ bool	Game::start(void)
 		// enemy generation
 		else if (!(r % 15))
 		{
-			Enemy	*enemy = new Enemy(this->_screen.getCols(), 6 + r % 25);
+			Enemy	*enemy = new Enemy(this->_screen.getCols(), 6 + std::rand() % 25);
 			IBullet	*shoot;
 			if (!eh.store(enemy))
 				delete enemy;

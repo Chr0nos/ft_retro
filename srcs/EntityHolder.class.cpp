@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:04:51 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 14:41:41 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 15:01:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,10 @@ void	EntityHolder::show(Display &screen)
 		if (!e)
 			;
 		else if (e->getX() > 0)
+		{
+			attron(COLOR_PAIR(e->getColor()));
 			screen.putstr(e->getC(), *e);
+		}
 		else
 			this->remove(i);
 	}

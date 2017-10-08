@@ -6,13 +6,13 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:11:46 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 14:57:23 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 15:00:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Player.class.hpp"
 
-Player::Player(int x, int y, int maxX) : Entity(x, y, ">", 1, 1), _weapon("gun"), _maxX(maxX - 1)
+Player::Player(int x, int y, int maxX) : Entity(x, y, ">", 1, 2), _weapon("gun"), _maxX(maxX - 1)
 {
 }
 

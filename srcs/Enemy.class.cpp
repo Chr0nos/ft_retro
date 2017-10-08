@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/08 14:23:21 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 14:44:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 15:01:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Entity.class.hpp"
 #include "Gun.class.hpp"
 
-Enemy::Enemy(int x, int y) : Entity::Entity(x, y, "<", 50)
+Enemy::Enemy(int x, int y) : Entity::Entity(x, y, "<", 50, 5)
 {
 }
 
