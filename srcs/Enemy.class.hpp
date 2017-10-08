@@ -6,7 +6,7 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/08 11:57:38 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 14:31:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:18:11 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ class Enemy : public Entity
 		Enemy(int x, int y);
 		Enemy(Enemy & src);
 		~Enemy(void);
-		IBullet* fire(void) const;
+
+		Enemy &		operator=(Enemy const & rhs);
+
+		IBullet*	fire(void) const;
 
 	private:
 		Enemy(void);
