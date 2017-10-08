@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 16:39:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 17:41:58 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	Display::setVisible(bool const state)
 		init_pair(3, COLOR_WHITE, COLOR_BLACK);
 		init_pair(4, COLOR_CYAN, COLOR_BLACK);
 		init_pair(5, COLOR_YELLOW, COLOR_BLACK);
+		init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
 		raw();
 		cbreak();
 		noecho();

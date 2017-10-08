@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 17:19:54 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 17:45:16 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,18 @@ void	Game::events(int & c, Player & p, BulletHolder & bh)
 		timeout(-1);
 		while ((c = getch()) != 'p');
 		timeout(0);
+	}
+	// ubber shoot !
+	else if (c == 'u')
+	{
+		for (unsigned int i = 6; i < 28; i++)
+		{
+			IBullet		*shoot;
+			shoot = p.fire();
+			shoot->setColor(6);
+			if (!(bh.store(shoot)))
+				delete shoot;
+		}
 	}
 	c = getch();
 }
