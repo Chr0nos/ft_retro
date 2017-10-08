@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 13:30:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 13:37:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,11 @@ bool	Game::start(void)
 			truc = new Obstacle(this->_screen.getCols(), 6 + std::rand() % 25);
 			eh.store(truc);
 		}
-		if (c != -1)
 		{
 			keyString.str("");
-			keyString << "last input: " << c << " - t: " << t << " - pos: " << p.getX() << "@" << p.getY();
+			keyString << "t: " << t << " - pos: " <<
+				p.getX() << "@" << p.getY() << " - active bullets: " <<
+				bh.count() << " - entities alives: " << eh.count();
 		}
 
 		this->events(c, p, bh);

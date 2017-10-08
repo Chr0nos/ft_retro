@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 21:03:58 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 12:26:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 13:34:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ void	BulletHolder::clear(void)
 		delete this->_bullets[i];
 		this->_bullets[i] = nullptr;
 	}
+	this->_activeBullets = 0;
 }
 
 void	BulletHolder::init(void)
 {
 	for (unsigned i = 0; i < this->_bulletsCount; i++)
 		this->_bullets[i] = nullptr;
+	this->_activeBullets = 0;
 }
 
 IBullet*	BulletHolder::getBullet(unsigned int index) const
@@ -63,6 +65,7 @@ bool	BulletHolder::store(IBullet *bullet)
 		if (!this->_bullets[i])
 		{
 			this->_bullets[i] = bullet;
+			this->_activeBullets++;
 			return (true);
 		}
 	}
@@ -114,5 +117,11 @@ void		BulletHolder::remove(unsigned int const index)
 	{
 		delete this->_bullets[index];
 		this->_bullets[index] = nullptr;
+		this->_activeBullets--;
 	}
+}
+
+unsigned int		BulletHolder::count(void) const
+{
+	return (this->_activeBullets);
 }

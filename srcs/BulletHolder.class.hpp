@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 21:01:40 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 11:59:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 13:33:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ class BulletHolder
 		void			show(Display &screen) const;
 		unsigned int	getMaxBullets(void) const;
 		void			remove(unsigned int const index);
+		unsigned int	count(void) const;
 
 	private:
 		void				init(void);
 		const static unsigned int	_bulletsCount = 255;
 		IBullet				*_bullets[255];
+		unsigned int		_activeBullets;
 };
 
 #endif
