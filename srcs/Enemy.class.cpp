@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/08 14:23:21 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 15:39:07 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 16:18:56 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ Enemy::~Enemy(void)
 	Entity::~Entity();
 }
 
-IBullet* Enemy::fire(void) const
+Enemy &		Enemy::operator=(Enemy const & rhs)
+{
+	*this = rhs;
+}
+
+IBullet*	Enemy::fire(void) const
 {
 	return (new Gun(this->getX() - 1, this->getY(), -1, this->getX() + 1, 1));
 }

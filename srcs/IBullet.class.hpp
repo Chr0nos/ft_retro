@@ -6,7 +6,7 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:37:54 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 15:06:26 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 16:21:04 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ public:
 
 private:
 };
-
-std::ostream &	operator<<(std::ostream & o, IBullet const & bul);
 
 #endif
