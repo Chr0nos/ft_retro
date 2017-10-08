@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:04:51 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 15:48:52 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 18:22:31 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ EntityHolder::~EntityHolder(void)
 void	EntityHolder::init(void)
 {
 	for (unsigned int i = 0; i < this->_maxItems; i++)
-		this->_items[i] = nullptr;
+		this->_items[i] = 0;
 }
 
 void	EntityHolder::clear(void)
@@ -35,7 +35,7 @@ void	EntityHolder::clear(void)
 		if (this->_items[i])
 		{
 			delete this->_items[i];
-			this->_items[i] = nullptr;
+			this->_items[i] = 0;
 		}
 	}
 }
@@ -43,7 +43,7 @@ void	EntityHolder::clear(void)
 Entity* EntityHolder::getItem(unsigned int const index) const
 {
 	if (index >= this->_maxItems)
-		return (nullptr);
+		return (0);
 	return (this->_items[index]);
 }
 
@@ -106,7 +106,7 @@ void	EntityHolder::remove(unsigned int index)
 	if (this->_items[index])
 	{
 		delete this->_items[index];
-		this->_items[index] = nullptr;
+		this->_items[index] = 0;
 	}
 }
 

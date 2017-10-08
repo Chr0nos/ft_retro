@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 17:41:58 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 18:22:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ WINDOW* Display::getWin(void) const
 
 void Display::init(void)
 {
-	this->_win = nullptr;
+	this->_win = 0;
 	this->_visible = false;
 	this->_cols = 0;
 	this->_rows = 0;

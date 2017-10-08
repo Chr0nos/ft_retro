@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 18:18:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 18:22:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 Game::Game(void)
 {
 	this->_screen.setVisible(true);
-	this->_eh = nullptr;
-	this->_bh = nullptr;
+	this->_eh = 0;
+	this->_bh = 0;
 }
 
 Game::Game(Game const & src)
