@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:28:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 17:51:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 11:40:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <iostream>
 # include <string>
 # include "Display.class.hpp"
+# include "Player.class.hpp"
+# include "BulletHolder.class.hpp"
 
 class Game
 {
@@ -26,6 +28,7 @@ class Game
 		void		start(void);
 		bool		isReady(void) const;
 		int			sayErr(std::string msg);
+		void		events(int const c, Player & p, BulletHolder & bh);
 
 	private:
 		Display		_screen;

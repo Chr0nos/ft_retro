@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 10:46:23 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 11:41:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,9 @@ void	Game::start(void)
 		if ((c == static_cast<int>('q')) || (c == KEY_EXIT))
 			return ;
 		t = (std::clock() - t);
-		if (t < 50)
-			napms(static_cast<int>(t / 1000 - 50));
 		if (!(t % 5))
 		{
 			Obstacle	*truc;
-		//	int halfscreen = this->_screen.getCols() >> 1;
 
 			truc = new Obstacle(this->_screen.getCols(), 6 + std::rand() % 25);
 			eh.store(truc);
@@ -84,20 +81,7 @@ void	Game::start(void)
 		}
 		this->_screen.clearScreen();
 		this->_screen.putstr(keyString.str(), 2, 5);
-		if ((c == 'w') || (c == KEY_UP))
-			p.move(0, -1);
-		else if ((c == 's') || (c == KEY_DOWN))
-			p.move(0, 1);
-		else if ((c == 'd') || (c == KEY_RIGHT))
-			p.move(2, 0);
-		else if ((c == 'a') || (c == KEY_LEFT))
-			p.move(-2, 0);
-		else if (c == ' ')
-		{
-			IBullet		*bullet = p.fire();
-			if (!bh.store(bullet))
-				delete bullet;
-		}
+		this->events(c, p, bh);
 		bh.move();
 		bh.show(this->_screen);
 		eh.move();
@@ -120,4 +104,22 @@ int		Game::sayErr(std::string msg)
 	this->_screen.putstr(msg, 0, 0);
 	getch();
 	return (1);
+}
+
+void	Game::events(int const c, Player & p, BulletHolder & bh)
+{
+	if ((c == 'w') || (c == KEY_UP))
+		p.move(0, -1);
+	else if ((c == 's') || (c == KEY_DOWN))
+		p.move(0, 1);
+	else if ((c == 'd') || (c == KEY_RIGHT))
+		p.move(2, 0);
+	else if ((c == 'a') || (c == KEY_LEFT))
+		p.move(-2, 0);
+	else if (c == ' ')
+	{
+		IBullet		*bullet = p.fire();
+		if (!bh.store(bullet))
+			delete bullet;
+	}
 }
