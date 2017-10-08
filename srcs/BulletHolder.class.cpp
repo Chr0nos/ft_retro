@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 21:03:58 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 13:34:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:04:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,14 @@ void	BulletHolder::show(Display &screen) const
 {
 	IBullet		*bullet;
 
-	attron(COLOR_PAIR(4));
 	for (unsigned int i = 0; i < this->_bulletsCount; i++)
 	{
 		bullet = this->_bullets[i];
 		if (bullet)
+		{
+			attron(COLOR_PAIR(bullet->getColor()));
 			screen.putstr(bullet->getC(), bullet->getX(), bullet->getY());
+		}
 	}
 	attron(COLOR_PAIR(3));
 }

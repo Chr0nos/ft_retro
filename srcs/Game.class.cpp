@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 15:50:32 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 16:13:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ bool	Game::start(void)
 		this->_screen.putstr(keyString.str(), 2, 5);
 		bh.show(this->_screen);
 		eh.show(this->_screen);
+		attron(COLOR_PAIR(5));
 		this->_screen.putstr(p.getC(), p);
 		this->_screen.flush();
 		this->_screen.setCursorAt(0, 0);
@@ -144,6 +145,7 @@ void	Game::events(int & c, Player & p, BulletHolder & bh)
 	if (c == ' ')
 	{
 		IBullet		*bullet = p.fire();
+
 		if (!bh.store(bullet))
 			delete bullet;
 	}
