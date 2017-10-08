@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 10:46:23 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 11:40:16 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	Game::start(void)
 
 	t = 0;
 	timeout(0);
+	c = getch();
 	while (1)
 	{
 		t = std::clock();
-		c = getch();
-		while (std::clock() < (t + 30000))
+		while (std::clock() < (t + 15000))
 		{
 			int tmp = getch();
 			if (tmp != -1)
@@ -69,7 +69,7 @@ void	Game::start(void)
 		t = (std::clock() - t);
 		if (t < 50)
 			napms(static_cast<int>(t / 1000 - 50));
-		if (!(t % 5))
+		if (!(std::rand() % 20))
 		{
 			Obstacle	*truc;
 		//	int halfscreen = this->_screen.getCols() >> 1;
@@ -84,24 +84,33 @@ void	Game::start(void)
 		}
 		this->_screen.clearScreen();
 		this->_screen.putstr(keyString.str(), 2, 5);
-		if ((c == 'w') || (c == KEY_UP))
-			p.move(0, -1);
-		else if ((c == 's') || (c == KEY_DOWN))
-			p.move(0, 1);
-		else if ((c == 'd') || (c == KEY_RIGHT))
-			p.move(2, 0);
-		else if ((c == 'a') || (c == KEY_LEFT))
-			p.move(-2, 0);
-		else if (c == ' ')
+		if (!(this->_screen.getFrame() % 2))
 		{
-			IBullet		*bullet = p.fire();
-			if (!bh.store(bullet))
-				delete bullet;
+			if ((c == 'w') || (c == KEY_UP))
+				p.move(0, -1);
+			else if ((c == 's') || (c == KEY_DOWN))
+				p.move(0, 1);
+			else if ((c == 'd') || (c == KEY_RIGHT))
+				p.move(2, 0);
+			else if ((c == 'a') || (c == KEY_LEFT))
+				p.move(-2, 0);
+			else if (c == ' ')
+			{
+				IBullet		*bullet = p.fire();
+				if (!bh.store(bullet))
+					delete bullet;
+			}
+			c = getch();
 		}
 		bh.move();
 		bh.show(this->_screen);
-		eh.move();
+		if (!(this->_screen.getFrame() % 4))
+		{
+			eh.move();
+		}
 		eh.show(this->_screen);
+		if (eh.haveColision(p))
+			return ;
 		this->_screen.putstr(p.getC(), p);
 		this->_screen.flush();
 		this->_screen.setCursorAt(0, 0);
