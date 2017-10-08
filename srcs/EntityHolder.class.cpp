@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:04:51 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 14:21:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 14:41:41 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ void		EntityHolder::collisions(BulletHolder & bullets)
 			{
 				bullet->makeDamage(*ent);
 				if (ent->isDead())
-					this->remove(i);
+					this->remove(index);
 				if (bullet->toDelete())
 				{
 					bullets.remove(i);

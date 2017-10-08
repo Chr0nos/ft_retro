@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 14:45:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 14:56:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,14 @@ bool	Game::start(void)
 	BulletHolder		bh;
 	EntityHolder		eh;
 
-	{
-		Enemy	*e = new Enemy(150, 10);
-		IBullet	*bullet;
-		eh.store(e);
-		bullet = e->fire();
-		if (!bh.store(bullet))
-			delete bullet;
-	}
-	eh.store(new Obstacle(100, 10));
 	t = 0;
 	timeout(0);
 	c = getch();
 	while (1)
 	{
+		const int r = std::rand();
 		t = std::clock();
-		while (std::clock() < (t + 15000))
+		while (std::clock() < (t + 20000 - this->_screen.getFrame() * 2))
 		{
 			int tmp = getch();
 			if (tmp != -1)
@@ -81,19 +73,33 @@ bool	Game::start(void)
 		t = (std::clock() - t);
 
 		// Obstacles generation
-		if (!(std::rand() % 20))
+		if (!(r % 10))
 		{
 			Obstacle	*truc;
 
 			truc = new Obstacle(this->_screen.getCols(), 6 + std::rand() % 25);
-			eh.store(truc);
+			if (!(eh.store(truc)))
+				delete truc;
 		}
+		// enemy generation
+		else if (!(r % 15))
 		{
-			keyString.str("");
-			keyString << "t: " << t << " - pos: " <<
-				p.getX() << "@" << p.getY() << " - active bullets: " <<
-				bh.count() << " - entities alives: " << eh.count();
+			Enemy	*enemy = new Enemy(this->_screen.getCols(), 6 + r % 25);
+			IBullet	*shoot;
+			if (!eh.store(enemy))
+				delete enemy;
+			else
+			{
+				shoot = enemy->fire();
+				if (!bh.store(shoot))
+					delete shoot;
+			}
 		}
+		keyString.str("");
+		keyString << "t: " << t << " - pos: " <<
+			p.getX() << "@" << p.getY() << " - active bullets: " <<
+			bh.count() << " - entities alives: " << eh.count();
+
 
 		this->events(c, p, bh);
 		bh.move();
