@@ -6,13 +6,13 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 16:25:21 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 13:42:01 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 14:23:03 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Obstacle.class.hpp"
 
-Obstacle::Obstacle(int x, int y) : Entity(x, y, "#", 1)
+Obstacle::Obstacle(int x, int y) : Entity(x, y, "#", 3)
 {
 }
 
@@ -38,7 +38,16 @@ Obstacle &	Obstacle::operator=(Obstacle const & rhs)
 void		Obstacle::setDamage(int dmg)
 {
 	dmg = 0;
-	this->::Entity::setHP(0);
+	this->setHP(this->getHP() - 1);
+	switch(this->getHP())
+	{
+		case 2:
+			this->setC("*");
+			break;
+		case 1:
+			this->setC(".");
+			break;
+	}
 }
 
 void		Obstacle::move(int deltaX, int deltaY)
