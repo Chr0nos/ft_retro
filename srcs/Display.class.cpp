@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/07 22:24:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 11:31:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,4 +178,9 @@ void	Display::debug(std::ostream &target) const
 void	Display::clearScreen(void)
 {
 	clear();
+}
+
+unsigned int	Display::getFrame(void) const
+{
+	return (this->_frame);
 }
