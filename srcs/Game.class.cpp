@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 16:34:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 17:19:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 Game::Game(void)
 {
 	this->_screen.setVisible(true);
+	this->_eh = nullptr;
+	this->_bh = nullptr;
 }
 
 Game::Game(Game const & src)
@@ -44,6 +46,32 @@ Game& Game::operator=(Game const & src)
 	return (*this);
 }
 
+// spawn a new enemy randomly at the right of the screen
+void	Game::spawnEnemy(void)
+{
+	Enemy	*enemy = new Enemy(this->_screen.getCols(), 6 + std::rand() % 25);
+	IBullet	*shoot;
+	if (!this->_eh->store(enemy))
+		delete enemy;
+	else
+	{
+		shoot = enemy->fire();
+		shoot->setColor(1);
+		if (!this->_bh->store(shoot))
+			delete shoot;
+	}
+}
+
+// spawm a new obstacle randomly at the right of the screen
+void	Game::spawnObstacle(void)
+{
+	Obstacle	*truc;
+
+	truc = new Obstacle(this->_screen.getCols(), 6 + std::rand() % 25);
+	if (!(this->_eh->store(truc)))
+		delete truc;
+}
+
 // return a boolean: true = need to restart a new game
 // false means "hey we'r done here, dont restart"
 bool	Game::start(void)
@@ -56,6 +84,8 @@ bool	Game::start(void)
 	EntityHolder		eh;
 	int					score = 0;
 
+	this->_bh = &bh;
+	this->_eh = &eh;
 	this->_screen.resetFrameCounter();
 	t = 0;
 	timeout(0);
@@ -76,28 +106,10 @@ bool	Game::start(void)
 
 		// Obstacles generation
 		if (!(r % 10))
-		{
-			Obstacle	*truc;
-
-			truc = new Obstacle(this->_screen.getCols(), 6 + std::rand() % 25);
-			if (!(eh.store(truc)))
-				delete truc;
-		}
+			this->spawnObstacle();
 		// enemy generation
 		else if (!(r % 15))
-		{
-			Enemy	*enemy = new Enemy(this->_screen.getCols(), 6 + std::rand() % 25);
-			IBullet	*shoot;
-			if (!eh.store(enemy))
-				delete enemy;
-			else
-			{
-				shoot = enemy->fire();
-				shoot->setColor(1);
-				if (!bh.store(shoot))
-					delete shoot;
-			}
-		}
+			this->spawnEnemy();
 		keyString.str("");
 		keyString << "t: " << t << " - pos: " <<
 			p.getX() << "@" << p.getY() << " - active bullets: " <<
@@ -106,6 +118,7 @@ bool	Game::start(void)
 
 
 		this->events(c, p, bh);
+		// moving all the bullets
 		bh.move();
 		score += eh.collisions(bh);
 
@@ -118,17 +131,22 @@ bool	Game::start(void)
 		}
 		if ((eh.haveColision(p)) || (p.isDead()))
 			return (true);
-		// don't even dare to put something that display anything on the screen
-		// before thoses comments... (clipping prevent)
-		this->_screen.clearScreen();
-		this->_screen.putstr(keyString.str(), 2, 5);
-		bh.show(this->_screen);
-		eh.show(this->_screen);
-		attron(COLOR_PAIR(5));
-		this->_screen.putstr(p.getC(), p);
-		this->_screen.flush();
-		this->_screen.setCursorAt(0, 0);
+		this->refresh(p, keyString);
 	}
+}
+
+// this is the display part, no computing here
+void	Game::refresh(Player & p, std::stringstream const & keyString)
+{
+
+	this->_screen.clearScreen();
+	this->_screen.putstr(keyString.str(), 2, 5);
+	this->_bh->show(this->_screen);
+	this->_eh->show(this->_screen);
+	attron(COLOR_PAIR(5));
+	this->_screen.putstr(p.getC(), p);
+	this->_screen.flush();
+	this->_screen.setCursorAt(0, 0);
 }
 
 bool	Game::isReady(void) const
@@ -145,6 +163,7 @@ int		Game::sayErr(std::string msg)
 	return (1);
 }
 
+// every user event will be treated here
 void	Game::events(int & c, Player & p, BulletHolder & bh)
 {
 	if (c == ' ')

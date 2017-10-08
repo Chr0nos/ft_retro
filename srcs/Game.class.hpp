@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:28:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 13:07:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 17:16:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "Display.class.hpp"
 # include "Player.class.hpp"
 # include "BulletHolder.class.hpp"
+# include "EntityHolder.class.hpp"
 
 class Game
 {
@@ -30,8 +31,13 @@ class Game
 		int			sayErr(std::string msg);
 
 	private:
-		void		events(int & c, Player & p, BulletHolder & bh);
-		Display		_screen;
+		void			refresh(Player & p, std::stringstream const & keyString);
+		void			spawnEnemy(void);
+		void			spawnObstacle(void);
+		void			events(int & c, Player & p, BulletHolder & bh);
+		Display			_screen;
+		BulletHolder*	_bh;
+		EntityHolder*	_eh;
 
 };
 
