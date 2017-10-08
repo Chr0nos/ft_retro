@@ -6,7 +6,7 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 16:25:21 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 12:21:05 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 13:42:01 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ Obstacle &	Obstacle::operator=(Obstacle const & rhs)
 void		Obstacle::setDamage(int dmg)
 {
 	dmg = 0;
+	this->::Entity::setHP(0);
 }
 
 void		Obstacle::move(int deltaX, int deltaY)

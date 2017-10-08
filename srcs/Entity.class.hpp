@@ -6,7 +6,7 @@
 /*   By: abossi <abossi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:42:58 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/08 12:16:50 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 13:41:18 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ public:
 	Entity &	operator=(Entity const & rhs);
 
 	int				getHP(void) const;
+	void			setHP(int hp);
 	virtual void	setDamage(int dmg);
 	std::string		getC(void) const;
 	void			setC(std::string c);

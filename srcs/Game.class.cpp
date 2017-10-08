@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 13:37:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 14:04:02 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,12 @@ bool	Game::start(void)
 
 		this->events(c, p, bh);
 		bh.move();
-		if (!(this->_screen.getFrame() % 4))
+		eh.collisions(bh);
+		if (!(this->_screen.getFrame() % 2))
 		{
 			eh.move();
+			eh.collisions(bh);
 		}
-		eh.collisions(bh);
 		if ((eh.haveColision(p)) || (p.isDead()))
 			return (true);
 		// don't even dare to put something that display anything on the screen

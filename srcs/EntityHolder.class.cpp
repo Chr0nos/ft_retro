@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 23:04:51 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 13:20:54 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 14:15:55 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,13 +148,18 @@ void		EntityHolder::collisions(BulletHolder & bullets)
 		bullet = bullets.getBullet(i);
 		for (unsigned int index = 0; index < this->_maxItems; index++)
 		{
-			Entity	*ent = this->_items[i];
+			Entity	*ent = this->_items[index];
 			if ((!ent) || (!bullet));
 			else if ((bullet->getX() == ent->getX()) && (bullet->getY() == ent->getY()))
 			{
 				bullet->makeDamage(*ent);
 				if (ent->isDead())
 					this->remove(i);
+				if (bullet->toDelete())
+				{
+					bullets.remove(i);
+					break;
+				}
 			}
 		}
 	}

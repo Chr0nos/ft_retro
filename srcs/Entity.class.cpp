@@ -6,7 +6,7 @@
 /*   By: abossi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 15:42:56 by abossi            #+#    #+#             */
-/*   Updated: 2017/10/07 18:19:14 by abossi           ###   ########.fr       */
+/*   Updated: 2017/10/08 13:41:52 by abossi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ Entity &	Entity::operator=(Entity const & rhs)
 int			Entity::getHP(void) const
 {
 	return this->_HP;
+}
+
+void		Entity::setHP(int hp)
+{
+	this->_HP = hp;
 }
 
 void		Entity::setDamage(int dmg)
