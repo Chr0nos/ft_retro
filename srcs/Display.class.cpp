@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 13:30:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 16:27:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:39:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	Display::_drawMenu(void)
 	std::stringstream	infos;
 
 	attron(COLOR_PAIR(2));
-	infos << "enemies alive: " << 42 << " - other field: " << 4 << " - frame: " << this->_frame;
+	infos << "frame: " << this->_frame;
 	this->putstr(infos.str(), 3, 2);
 
 	// repositioning the cursor

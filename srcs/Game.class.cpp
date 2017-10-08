@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 17:31:07 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/08 16:27:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/08 16:34:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ bool	Game::start(void)
 			else
 			{
 				shoot = enemy->fire();
+				shoot->setColor(1);
 				if (!bh.store(shoot))
 					delete shoot;
 			}
@@ -150,6 +151,7 @@ void	Game::events(int & c, Player & p, BulletHolder & bh)
 	{
 		IBullet		*bullet = p.fire();
 
+		bullet->setColor(4);
 		if (!bh.store(bullet))
 			delete bullet;
 	}
